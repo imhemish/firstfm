@@ -23,3 +23,17 @@ func UpdateProfile(user User) error {
 	return error
 
 }
+
+func GetProfile(uid string) (User, error) {
+	query, err := connectedDb.Query("SELECT (about, name, picture) FROM users WHERE userid=$1", uid)
+	var user User
+	if err != nil {
+		return user, err
+
+	}
+	if query.Next() {
+		err = query.Scan(&user.About, &user.Name, &user.Picture)
+	}
+
+	return user, err
+}

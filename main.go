@@ -27,6 +27,7 @@ func main() {
 	}))
 
 	protected.Put("/profile", handlers.PutProfile)
+	protected.Get("/profile/:userid", handlers.GetProfile)
 	protected.Put("/password", handlers.PutPassword)
 	protected.Get("/artist/:artist", handlers.ArtistHandler)
 	protected.Get("/album/:album", handlers.AlbumHandler)
